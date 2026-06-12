@@ -9,5 +9,5 @@ Outdoor digital device management APP
 
 ## Download APK
 ### Official GitHub Download (Overseas customers preferred)
-> Global direct download link（for clients from Europe, USA, Southeast Asia）
-https://github.com/xqfu-dev/OutdoorAppManager/releases/download/v1.0.6/Uplink.vision.1.0.6.apk
+> Global direct download link
+https://github.com/xqfu-dev/OutdoorAppManager/releases/download/default/uplink_vision_default.apk
