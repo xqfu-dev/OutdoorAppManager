@@ -8,6 +8,6 @@ Outdoor digital device management APP
 - Save captured photos & videos to system gallery
 
 ## Download APK
-### Official GitHub Download (Overseas customers preferred)
+### Official GitHub Download
 > Global direct download link
 https://github.com/xqfu-dev/OutdoorAppManager/releases/download/default/uplink_vision_default.apk
