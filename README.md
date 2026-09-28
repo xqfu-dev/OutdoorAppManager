@@ -9,7 +9,7 @@ Outdoor digital device management APP
 - Online device firmware upgrade
 - Save captured photos & videos to system gallery
 
-## Download APK
+## Download APP
 
 <div align="center">
 <table>
