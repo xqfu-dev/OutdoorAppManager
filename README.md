@@ -10,6 +10,18 @@ Outdoor digital device management APP
 - Save captured photos & videos to system gallery
 
 ## Download APK
-### Google Play
-> 
-<img width="400" height="400" alt="qr_google" src="https://github.com/user-attachments/assets/5b077a2e-880f-44f4-aae3-707fbc2319ec" />
+
+<div align="center">
+<table>
+<tr>
+<td align="center">
+Google Play<br>
+<img width="300" height="300" alt="qr_google" src="https://github.com/user-attachments/assets/e6672e66-14e8-4273-ad5e-5552305be615" />
+</td>
+<td align="center">
+App Store<br>
+<img width="300" height="300" alt="qr_apple" src="https://github.com/user-attachments/assets/ebc6662c-b121-43c5-8cc9-1baaabe69fbf" />
+</td>
+</tr>
+</table>
+</div>
