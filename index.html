@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Download TN Vision · Fu Wang Yaochuan</title>
+<meta name="description" content="Download TN Vision — a thermal imaging / night vision observation app. Available on the App Store and Google Play.">
+<style>
+    :root{
+        --bg: #0b1121; --card: #151f32; --card-hover: #1a263c;
+        --line: rgba(255,255,255,0.08);
+        --text: #f8fafc; --body: #cbd5e1; --muted: #94a3b8;
+        --accent: #38bdf8; --accent-2: #818cf8;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+        font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        background: radial-gradient(1200px 600px at 50% -200px, rgba(56,189,248,0.15), transparent 80%), var(--bg);
+        color:var(--body); min-height:100vh; -webkit-font-smoothing:antialiased;
+        -webkit-tap-highlight-color: transparent;
+        display: flex;
+        flex-direction: column;
+    }
+    .main-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 60px 20px 40px;
+        justify-content: center;
+    }
+    .content-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+    }
+    .left-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+    }
+    .app-icon-wrap{
+        position: relative;
+        margin-bottom: 24px;
+    }
+    .app-icon{
+        width: 96px; height: 96px;
+        border-radius: 22px;
+        object-fit: cover;
+        box-shadow: 0 12px 40px rgba(56,189,248,0.25), 0 4px 16px rgba(0,0,0,0.5);
+        position: relative;
+        z-index: 1;
+        background: var(--card);
+    }
+    .app-icon-wrap::before{
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, rgba(56,189,248,0.4), rgba(129,140,248,0.4));
+        filter: blur(20px);
+        opacity: 0.6;
+        z-index: 0;
+    }
+    .app-name{
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+    }
+    .app-ver{
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 16px;
+    }
+    .app-tagline{
+        font-size: 15px;
+        color: var(--body);
+        opacity: 0.85;
+        line-height: 1.7;
+    }
+    .qr-section {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid var(--line);
+        width: 100%;
+        max-width: 240px;
+    }
+    .qr-section img{
+        width: 120px; height: 120px;
+        background: #fff; padding: 10px; border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .qr-section p{
+        margin-top: 12px;
+        font-size: 13px;
+        color: var(--muted);
+    }
+    .right-panel {
+        width: 100%;
+        max-width: 400px;
+    }
+    .section-title{
+        text-align: left;
+        font-size: 13px;
+        color: var(--muted);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        padding-left: 4px;
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .item{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 20px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .item::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.05);
+        pointer-events: none;
+    }
+    .item:hover{
+        background: var(--card-hover);
+        border-color: rgba(56,189,248,0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px -8px rgba(56,189,248,0.25);
+    }
+    .item:active{
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+    .item-icon{
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(129,140,248,0.1));
+        border: 1px solid rgba(56,189,248,0.25);
+        color: var(--accent);
+    }
+    .item-icon svg{ width: 24px; height: 24px; }
+    .item-body{
+        flex: 1;
+        text-align: left;
+        min-width: 0;
+    }
+    .item-title{
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 3px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .item-desc{
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.5;
+    }
+    .item-arrow{
+        flex-shrink: 0;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        transition: transform .2s, color .2s;
+    }
+    .item-arrow svg{ width: 18px; height: 18px; }
+    .item:hover .item-arrow{
+        transform: translateX(3px);
+        color: var(--accent);
+    }
+    .item.current{
+        border-color: rgba(56,189,248,0.5);
+        background: linear-gradient(135deg, rgba(56,189,248,0.1), rgba(129,140,248,0.05));
+    }
+    .item.current .item-title::after{
+        content: " · Current device";
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--accent);
+    }
+    .item.current .item-icon{
+        background: linear-gradient(135deg, rgba(56,189,248,0.3), rgba(129,140,248,0.2));
+        border-color: rgba(56,189,248,0.5);
+    }
+    .hint{
+        margin-top: 20px;
+        padding: 14px 16px;
+        background: rgba(251,191,36,0.1);
+        border: 1px solid rgba(251,191,36,0.3);
+        border-radius: 12px;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #fbbf24;
+        display: none;
+        text-align: left;
+    }
+    .hint.show{ display: block; }
+    .hint strong{ color: #fcd34d; }
+    .footer{
+        width: 100%;
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 32px 20px 40px;
+        text-align: center;
+        font-size: 13px;
+        color: #64748b;
+        line-height: 1.8;
+    }
+    .footer a{
+        color: #64748b;
+        text-decoration: none;
+        transition: color .2s;
+    }
+    .footer a:hover{ color: var(--muted); }
+    .footer .copyright { margin-bottom: 8px; }
+    @media (min-width: 768px) {
+        .main-container {
+            padding: 100px 20px 60px; 
+        }
+        .content-grid {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            padding: 0 40px;
+        }
+        .left-panel {
+            align-items: flex-start;
+            text-align: left;
+            flex: 1;
+        }
+        .qr-section {
+            display: flex;
+            align-items: flex-start;
+            max-width: 100%;
+        }
+        .qr-section p { text-align: center; width: 120px; }
+        .right-panel {
+            flex: 1;
+            max-width: 480px;
+            background: var(--card);
+            padding: 32px;
+            border-radius: 24px;
+            border: 1px solid var(--line);
+            box-shadow: 0 32px 80px -20px rgba(0,0,0,0.6);
+        }
+    }
+</style>
+</head>
+<body>
+
+<main class="main-container">
+    <div class="content-grid">
+        <div class="left-panel">
+            <div class="app-icon-wrap">
+                <img class="app-icon" src="/assets/icon.png" alt="TN Vision" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHJ4PSI0Ii8+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMy41Ii8+PC9zdmc+'">
+            </div>
+            <h1 class="app-name">TN Vision</h1>
+            <p class="app-ver">v1.0.28</p>
+            <p class="app-tagline">Thermal imaging and night vision observation app with device connection, real-time preview, photo/video capture, and parameter adjustment. Built for an exceptional visual experience.</p>
+
+            <div class="qr-section">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Ftn-vision.xqfu-dev.workers.dev" alt="Scan to download TN Vision">
+                <p>Scan with your phone to download</p>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="section-title">Choose a download channel</div>
+
+            <div class="list">
+                <a class="item" id="iosItem" href="https://apps.apple.com/app/id6762135887" rel="noopener">
+                    <div class="item-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    </div>
+                    <div class="item-body">
+                        <div class="item-title">App Store</div>
+                        <div class="item-desc">For iPhone · iPad</div>
+                    </div>
+                    <div class="item-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </div>
+                </a>
+
+                <a class="item" id="gplayItem" href="https://play.google.com/store/apps/details?id=com.fxq.uplink.vision" rel="noopener">
+                    <div class="item-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5C3 3.04 3.25 2.63 3.64 2.42L13.5 12 3.64 21.58C3.25 21.37 3 20.96 3 20.5M20.84 10.32L17.44 8.4 15.06 12 17.44 15.6 20.84 13.68C21.73 13.18 21.73 10.82 20.84 10.32M15.86 7.6L5.25 2.06 13.89 10.7 15.86 7.6M15.86 16.4L13.89 13.3 5.25 21.94 15.86 16.4Z"/></svg>
+                    </div>
+                    <div class="item-body">
+                        <div class="item-title">Google Play</div>
+                        <div class="item-desc">For Android devices</div>
+                    </div>
+                    <div class="item-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </div>
+                </a>
+            </div>
+
+            <div class="hint" id="hint"></div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="copyright">© 2026 Fu Wang Yaochuan. All rights reserved.</div>
+    <div>
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备2026174257号</a>
+    </div>
+</footer>
+
+<script>
+(function () {
+    const ua = navigator.userAgent;
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+    const isWeChat = /MicroMessenger/i.test(ua);
+    const isQQ = /\sQQ/i.test(ua) || /QQBrowser/i.test(ua);
+
+    if (isIOS) {
+        document.getElementById('iosItem').classList.add('current');
+    } else if (isAndroid) {
+        document.getElementById('gplayItem').classList.add('current');
+    }
+
+    if ((isWeChat || isQQ) && (isIOS || isAndroid)) {
+        const hint = document.getElementById('hint');
+        hint.innerHTML = isWeChat
+            ? '<strong>Downloads are not available directly in WeChat</strong><br>Tap “···” in the top-right corner and choose “Open in Browser”.'
+            : '<strong>Downloads are not available directly in QQ</strong><br>Tap “···” in the top-right corner and choose “Open in Browser”.';
+        hint.classList.add('show');
+
+        document.querySelectorAll('.item').forEach((el) => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                hint.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+    }
+})();
+</script>
+</body>
+</html>
